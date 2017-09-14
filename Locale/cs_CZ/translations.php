@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'Help on Mattermost integration' => 'Nápověda pro Mattermost integraci.',
-    'Channel/Group/User (Optional)' => 'Kanál/Skupina/Uživatel (volitelně)',
+    'Help on Matrix integration' => 'Nápověda pro Matrix integraci.',
+    'Chat room' => 'Kanál',
 );
 

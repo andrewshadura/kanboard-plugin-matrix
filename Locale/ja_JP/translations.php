@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'Help on Mattermost integration' => 'Mattermost 連携のヘルプ',
-    // 'Channel/Group/User (Optional)' => '',
+    'Help on Matrix integration' => 'Matrix 連携のヘルプ',
+    // 'Chat room' => '',
 );
 

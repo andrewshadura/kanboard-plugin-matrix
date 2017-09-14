@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'Help on Mattermost integration' => 'Aide sur l\'intégration avec Mattermost',
-    'Channel/Group/User (Optional)' => 'Canal/Groupe/Utilisateur (Optionnel)',
+    'Help on Matrix integration' => 'Aide sur l\'intégration avec Matrix',
+    'Chat room' => 'Canal',
 );
 

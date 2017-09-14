@@ -2,7 +2,7 @@
 
 require_once 'tests/units/Base.php';
 
-use Kanboard\Plugin\Mattermost\Plugin;
+use Kanboard\Plugin\Matrix\Plugin;
 
 class PluginTest extends Base
 {
