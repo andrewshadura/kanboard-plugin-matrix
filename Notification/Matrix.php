@@ -66,16 +66,15 @@ class Matrix extends Base implements NotificationInterface
             $title = $this->notificationModel->getTitleWithoutAuthor($event_name, $event_data);
         }
 
-        $message = htmlspecialchars($title);
-        $message .= ' (<b>'.htmlspecialchars($event_data['task']['title'])."</b>) <br>";
+        $message  = '<font color="green">';
+        $message .= htmlspecialchars($title);
+        $message .= '</font> (<b>'.htmlspecialchars($event_data['task']['title'])."</b>) ";
 
         if ($this->configModel->get('application_url') !== '') {
             $url = $this->helper->url->to('TaskViewController', 'show', array('task_id' => $event_data['task']['id'], 'project_id' => $project['id']), '', true);
-            $message .= '<a href="';
+            $message .= '<font color="teal">';
             $message .= htmlspecialchars($url);
-            $message .= '">';
-            $message .= htmlspecialchars($url);
-            $message .= '</a>';
+            $message .= '</font>';
         }
 
         return $message;
