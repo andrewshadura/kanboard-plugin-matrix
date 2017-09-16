@@ -115,11 +115,16 @@ class Matrix extends Base implements NotificationInterface
         $html_content = $this->getMessage($project, $event_name, $event_data);
         $text_content = htmlspecialchars_decode(strip_tags($html_content));
 
+        $send_notices = $this->projectMetadataModel->get($project['id'], 'matrix_send_notices');
+        if (!isset($send_notices)) {
+            $send_notices = true;
+        }
+
         $r = $this->api->joinRoom($room);
         if (!isset($r)) {
             trigger_error("Failed to join Matrix room ".$room);
         } else {
-            $this->api->sendMessage($r->room_id, $text_content, $html_content, 'm.notice');
+            $this->api->sendMessage($r->room_id, $text_content, $html_content, $send_notices ? 'm.notice' : 'm.text');
         }
     }
 }
