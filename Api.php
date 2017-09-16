@@ -98,7 +98,6 @@ class Api extends Base
 
     private function _login($login_type, array $args)
     {
-    trigger_error(json_encode($args), E_USER_WARNING);
         $content = array_merge(array('type' => $login_type), $args);
         return json_decode($this->api('POST', '/login', $content), true);
     }
