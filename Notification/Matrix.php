@@ -59,6 +59,11 @@ class Matrix extends Base implements NotificationInterface
      */
     public function getMessage(array $project, $event_name, array $event_data)
     {
+        $use_colours = $this->projectMetadataModel->get($project['id'], 'matrix_use_colours');
+        if (!isset($use_colours)) {
+            $use_colours = true;
+        }
+
         if ($this->userSession->isLogged()) {
             $author = $this->helper->user->getFullname();
             $title = $this->notificationModel->getTitleWithAuthor($author, $event_name, $event_data);
@@ -66,16 +71,15 @@ class Matrix extends Base implements NotificationInterface
             $title = $this->notificationModel->getTitleWithoutAuthor($event_name, $event_data);
         }
 
-        $message = htmlspecialchars($title);
-        $message .= ' (<b>'.htmlspecialchars($event_data['task']['title'])."</b>) <br>";
+        $message  = $use_colours ? '<font color="green">' : '';
+        $message .= htmlspecialchars($title);
+        $message .= ($use_colours ? '</font>': '').' (<b>'.htmlspecialchars($event_data['task']['title'])."</b>) ";
 
         if ($this->configModel->get('application_url') !== '') {
             $url = $this->helper->url->to('TaskViewController', 'show', array('task_id' => $event_data['task']['id'], 'project_id' => $project['id']), '', true);
-            $message .= '<a href="';
+            $message .= $use_colours ? '<font color="teal">' : '';
             $message .= htmlspecialchars($url);
-            $message .= '">';
-            $message .= htmlspecialchars($url);
-            $message .= '</a>';
+            $message .= $use_colours ? '</font>' : '';
         }
 
         return $message;
