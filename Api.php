@@ -135,6 +135,12 @@ class Api extends Base
         return json_decode($this->api('POST', $path));
     }
 
+    public function leaveRoom($room_id)
+    {
+        $path = "/rooms/".urlencode($room_id)."/leave";
+        return json_decode($this->api('POST', $path));
+    }
+
     /**
      * Send a message event
      *
