@@ -1,7 +1,6 @@
 Matrix plugin for Kanboard
 ==============================
 
-[![Build Status](https://travis-ci.org/kanboard/plugin-matrix.svg?branch=master)](https://travis-ci.org/kanboard/plugin-matrix)
 
 Receive Kanboard notifications on Matrix.
 
