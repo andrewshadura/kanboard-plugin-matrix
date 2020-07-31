@@ -64,6 +64,11 @@ class Matrix extends Base implements NotificationInterface
             $use_colours = true;
         }
 
+        $use_embed_comment = $this->projectMetadataModel->get($project['id'], 'matrix_embed_comments');
+        if (!isset($use_embed_comment)) {
+            $use_embed_comment = true;
+        }
+
         if ($this->userSession->isLogged()) {
             $author = $this->helper->user->getFullname();
             $title = $this->notificationModel->getTitleWithAuthor($author, $event_name, $event_data);
@@ -81,8 +86,43 @@ class Matrix extends Base implements NotificationInterface
             $message .= htmlspecialchars($url);
             $message .= $use_colours ? '</font>' : '';
         }
+        if ($this->hasComments($event_name) && $use_embed_comment) {
+            $message .= '<p>' . $this->extractComment($event_data) . '</p>';
+        }
 
         return $message;
+    }
+    /**
+     * Check whether or not the event has comments and check if the option is enabled
+     * https://docs.kanboard.org/en/latest/developer_guide/webhooks.html?highlight=event_data#list-of-supported-events
+     *
+     * @access private
+     * @param  string    $event_name
+     *
+     */
+
+    private function hasComments($event_name)
+    {
+        switch($event_name) {
+            case "comment.create":
+            case "comment.update";
+                return true;
+            default:
+                return false;
+        }
+    }
+    /**
+     * 
+     * https://docs.kanboard.org/en/latest/developer_guide/webhooks.html?highlight=event_data#examples-of-event-payloads
+     *
+     * @access private
+     * @param  string    $event_data
+     *
+     */
+
+    private function extractComment(array $event_data)
+    {
+        return htmlspecialchars($event_data['comment']['comment']);
     }
 
     /**
