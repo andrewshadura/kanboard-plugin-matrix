@@ -9,7 +9,7 @@ Authors
 -------
 
 - Frederic Guillot wrote the original Mattermost plugin
-- Andrew Shadura adapted it to work with the Matrix API
+- Andrej Shadura adapted it to work with the Matrix API
 - License: MIT
 
 Requirements

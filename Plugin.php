@@ -9,7 +9,7 @@ use Kanboard\Core\Plugin\Base;
  * Matrix Plugin
  *
  * @package  matrix
- * @author   Frederic Guillot
+ * @author   Andrej Shadura
  */
 class Plugin extends Base
 {
@@ -32,7 +32,7 @@ class Plugin extends Base
 
     public function getPluginAuthor()
     {
-        return 'Andrew Shadura';
+        return 'Andrej Shadura';
     }
 
     public function getPluginVersion()

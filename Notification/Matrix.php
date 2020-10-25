@@ -10,7 +10,7 @@ use Kanboard\Plugin\Matrix\Api;
  * Matrix Notification
  *
  * @package  notification
- * @author   Andrew Shadura
+ * @author   Andrej Shadura
  */
 class Matrix extends Base implements NotificationInterface
 {
