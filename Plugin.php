@@ -42,7 +42,7 @@ class Plugin extends Base
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/kanboard/plugin-matrix';
+        return 'https://github.com/andrewshadura/kanboard-plugin-matrix';
     }
 
     public function getCompatibleVersion()
